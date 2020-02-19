@@ -1,0 +1,14 @@
+
+.text-center{
+    align-items: center;
+    text-align: center;
+}
+
+.text-left{
+    align-items: left;
+    text-align: left;
+}
+
+.color-badge{
+    color: white !important;
+}

@@ -1,0 +1,28 @@
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">Tarefas</a>
+    <div class="form-inline">      
+      <button class="btn btn-outline-primary my-2 my-sm-0" (click)="abrirModal(content)">Adicionar</button>
+    </div>
+  </nav>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Adicionar</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <p>Título</p>
+        <input class="form-control" type="text">
+        <p>Data para concluir:</p>
+        <input class="form-control" type="date">        
+        <p>Descrição</p>
+        <input class="form-control" type="text">
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salvar</button>
+    </div>
+  </ng-template>

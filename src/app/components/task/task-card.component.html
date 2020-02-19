@@ -1,0 +1,36 @@
+<div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{task.title}}</h5>
+        <p class="card-text">{{task.description}}</p>
+        <p class="card-text">Data de execução: {{task.taskDate | date: 'dd/MM/yyyy'}}</p>
+        <div class="text-left">
+            <button class="btn btn-primary btn-sm text-left color-badge" (click)="abrirModal(content)">Editar</button>
+            <button style="margin-left: 3px;" class="btn btn-danger btn-sm text-left color-badge" (click)="excluir()">Excluir</button>
+        </div>        
+      </div>
+    </div>
+  </div>
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Editar</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <p>Título</p>
+        <input class="form-control" type="text">
+        <p>Data para concluir:</p>
+        <input class="form-control" type="date">        
+        <p>Descrição</p>
+        <input class="form-control" type="text">
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Atualizar</button>
+    </div>
+  </ng-template>
