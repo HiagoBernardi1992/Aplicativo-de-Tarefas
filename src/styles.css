@@ -12,3 +12,8 @@
 .color-badge{
     color: white !important;
 }
+
+.small-notification{
+    font-size: 10px;
+    font-style: italic;
+}

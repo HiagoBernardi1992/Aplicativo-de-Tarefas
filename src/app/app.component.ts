@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     let taskQualquer = new TaskModel(
-      'Realizar Desafio', 'Realizar desafio proposto pelo itaú', new Date()
+      'Desafio Itaú', 'Realizar desafio do To Do List proposto pelo itaú', new Date(2020, 2, 20)
     );
     this.store.dispatch(Add(taskQualquer));
   }  

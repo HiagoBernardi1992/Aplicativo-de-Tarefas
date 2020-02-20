@@ -11,18 +11,21 @@
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
-    </div>
-    <div class="modal-body">
-      <form>
+    </div>      
+    <form [formGroup]="form">
+      <div class="modal-body">
         <p>Título</p>
-        <input class="form-control" type="text">
+        <input class="form-control" type="text" formControlName="title">
+        <small class="small-notification">*Deve ter de 02 a 20 caracteres.</small>
         <p>Data para concluir:</p>
-        <input class="form-control" type="date">        
+        <input class="form-control" type="date" formControlName="dateExecute">
+        <small class="small-notification">*Se a data for menor que a data de hoje, sera atribuido o dia de hoje.</small>        
         <p>Descrição</p>
-        <input class="form-control" type="text">
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salvar</button>
-    </div>
+        <input class="form-control" type="text" formControlName="description"> 
+        <small class="small-notification">*Deve ter de 05 a 40 caracteres.</small>           
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" [disabled]="form.invalid" (click)="save()">Salvar</button>
+      </div>
+    </form>    
   </ng-template>
