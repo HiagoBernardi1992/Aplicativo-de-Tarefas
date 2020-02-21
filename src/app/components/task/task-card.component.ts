@@ -38,13 +38,28 @@ export class TaskCardComponent implements OnInit{
     ngOnInit(){
 
     }
+
+    formatDate(date) {
+      var d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+  
+      if (month.length < 2) 
+          month = '0' + month;
+      if (day.length < 2) 
+          day = '0' + day;
+  
+      return [year, month, day].join('-');
+  }
     async excluir(){
         this.store.dispatch(Remove(this.task));
     }
 
-    async editar(){
+    async editar(){      
       const title = this.form.controls['title'].value;
       const description = this.form.controls['description'].value; 
+      const dataFormato = this.form.controls['dateExecute'].value;
       let dateExecute = new Date(this.form.controls['dateExecute'].value);
       if(dateExecute < new Date())
         dateExecute = new Date();
@@ -57,15 +72,15 @@ export class TaskCardComponent implements OnInit{
     };
 
     abrirModal(content){
-      debugger;
-      this.form.setValue({
-        title: this.task.title,
-        description: this.task.description,
-        dateExecute: '01/01/0001'
-      });
+      // this.form.setValue({
+      //   title: this.task.title,
+      //   description: this.task.description,
+      //   dateExecute: this.formatDate(this.task.taskDate)
+      // });
+      // this.form.updateValueAndValidity();
         this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
-          }, (reason) => {
+          }, (reason) => {            
             this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
           });
     }
